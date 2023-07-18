@@ -1,0 +1,28 @@
+{% extends 'blog_app/header.html' %}
+{% block body_block %}
+<section class="section blog-wrap bg-gray">
+<div class="container">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-9">
+         <h1>Please Login</h1>
+        <form class="contact-form bg-white rounded p-5" method="post" action="{% url 'blog_app_name:login' %}">
+          {% csrf_token %}
+          {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+          <input class="form-control" type="text" name="username" placeholder="Username">
+            <br>
+          <input class="form-control" type="password" name="password"  placeholder="Password"><br>
+          <input class="btn btn-main btn-round-full" type="submit" name="submit-contact" id="submit_contact" value="Login">
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+  </section>
+{% endblock %}

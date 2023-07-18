@@ -1,0 +1,99 @@
+<!-- footer Start -->
+{% load static %}
+<footer class="footer section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="widget">
+					<h4 class="text-capitalize mb-4">Company</h4>
+
+					<ul class="list-unstyled footer-menu lh-35">
+						<li><a href="#">Terms & Conditions</a></li>
+						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="#">Support</a></li>
+						<li><a href="#">FAQ</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-6 col-sm-6">
+				<div class="widget">
+					<h4 class="text-capitalize mb-4">Quick Links</h4>
+
+					<ul class="list-unstyled footer-menu lh-35">
+						<li><a href="#">About</a></li>
+						<li><a href="#">Services</a></li>
+						<li><a href="#">Team</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="widget">
+					<h4 class="text-capitalize mb-4">Subscribe Us</h4>
+					<p>Subscribe to get latest news article and resources  </p>
+				</div>
+			</div>
+
+			<div class="col-lg-3 ml-auto col-sm-6">
+				<div class="widget">
+					<div class="logo mb-4">
+						<h4>BMS<span>Tool.</span></h4>
+					</div>
+					<h6><a href="tel:+6767676767" >+6767676767</a></h6>
+					<a href="mailto:shubham@gmail.com"><span class="text-color h4">shubham@gmail.com</span></a>
+				</div>
+			</div>
+		</div>
+</footer>
+   
+    </div>
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+
+    
+    <!-- Main jQuery -->
+    <script src="{% static 'plugins/jquery/jquery.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <!-- Bootstrap 4.3.1 -->
+    <script src="{% static 'plugins/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+   <!--  Magnific Popup-->
+    <script src="{% static 'plugins/magnific-popup/dist/jquery.magnific-popup.min.js' %}"></script>
+    <!-- Slick Slider -->
+    <script src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
+    <!-- Counterup -->
+    <script src="{% static 'plugins/counterup/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'plugins/counterup/jquery.counterup.min.js' %}"></script>
+
+    <!-- Google Map -->
+    <script src="{% static 'plugins/google-map/map.js' %}"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>     -->
+    
+    <script src="{% static 'js/script.js' %}"></script>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+	function ProcessSimpleCgi(commentId){
+		$.ajax({
+			type: "POST",
+			url: "/blog_app/approve-comment/",
+			data: {'id':commentId,csrfmiddlewaretoken: '{{ csrf_token }}'},
+			dataType: "json",
+			success: function (result)
+			{
+				if(result.success == 'true'){
+					window.location.reload()
+				}
+			},
+			error: function(request, ajaxOptions, thrownError)
+			{
+				
+			}
+
+    	});
+	}
+	</script>
+  </body>
+  </html>

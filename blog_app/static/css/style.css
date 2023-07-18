@@ -1420,4 +1420,7 @@ h3.quote::before {
 li.error {
   color: red;
 }
+ul.errorlist{
+  color: red;
+}
 /*# sourceMappingURL=maps/style.css.map */

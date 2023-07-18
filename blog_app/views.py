@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect,get_object_or_404, HttpResponse,HttpResponseRedirect
-from .forms import AddBlog, AddComment
+from .forms import AddBlog, AddComment, SignupUser
 from .models import Blog, Comment
 from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView, DetailView)
 from django.contrib.messages.views import SuccessMessageMixin
@@ -12,6 +12,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -125,3 +126,37 @@ def remove_comment(request, pk):
     associated_post = comment_details.post.id
     comment_details.delete()
     return redirect('blog_app_name:blog-details',pk=associated_post)
+
+class SignupUser(CreateView,SuccessMessageMixin):
+    model = User
+    form_class = SignupUser
+    template_name = 'blog_app/signup.html'
+    success_message = 'Thank you for registering'
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        success_message = self.get_success_message(form.cleaned_data)
+        if success_message:
+            messages.success(self.request, success_message)
+        return response
+
+    def get_success_url(self):
+          return reverse('blog_app_name:signup-user')
+    
+    # def get_success_message(self, cleaned_data):
+    #     return "%(id)s was created successfully" % {'id': self.object.id}
+    
+    # def form_valid(self, form):
+    #   messages.success(self.request, "This is my success message")
+    #   super().form_valid(form)
+    #   return HttpResponseRedirect(self.get_success_url())
+    
+    # signup_form = SignupUser()
+    # if request.method == 'POST':
+    #     form = SignupUser(request.POST)
+    #     if  form.is_valid():
+    #         return HttpResponse('ok')
+    #     else:
+    #         err = form.errors
+    #         return reverse('blog_app_name:signup-user',{'err':err})
+    # return  render(request,'blog_app/signup.html',{'signup_form':signup_form })

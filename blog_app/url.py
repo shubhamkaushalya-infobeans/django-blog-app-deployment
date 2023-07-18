@@ -9,6 +9,7 @@ urlpatterns = [
      path('blog-detail/<int:pk>',views.BlogDetails.as_view(), name="blog-details"),
      path('blog-publish/<int:pk>',views.blog_publish, name="blog-publish"),
      path('add-comment/<int:pk>',views.add_comment, name="add-comment"),
+     path('signup/',views.SignupUser.as_view(), name='signup-user'),
      path('login',views.login_user, name='login'),
      path('logout',views.logout_user, name='logout'),
      path('approve-comment/',views.approve_comment, name="approve-comment"),

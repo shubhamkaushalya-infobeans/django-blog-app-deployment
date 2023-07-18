@@ -142,21 +142,3 @@ class SignupUser(CreateView,SuccessMessageMixin):
 
     def get_success_url(self):
           return reverse('blog_app_name:signup-user')
-    
-    # def get_success_message(self, cleaned_data):
-    #     return "%(id)s was created successfully" % {'id': self.object.id}
-    
-    # def form_valid(self, form):
-    #   messages.success(self.request, "This is my success message")
-    #   super().form_valid(form)
-    #   return HttpResponseRedirect(self.get_success_url())
-    
-    # signup_form = SignupUser()
-    # if request.method == 'POST':
-    #     form = SignupUser(request.POST)
-    #     if  form.is_valid():
-    #         return HttpResponse('ok')
-    #     else:
-    #         err = form.errors
-    #         return reverse('blog_app_name:signup-user',{'err':err})
-    # return  render(request,'blog_app/signup.html',{'signup_form':signup_form })
